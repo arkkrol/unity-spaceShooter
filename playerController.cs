@@ -9,7 +9,7 @@ public class Boundary
 [System.Serializable]
 public class TiltLimits
 {
-    public float tiltX, tiltZ;
+    public float tiltX;
 }
 
 [System.Serializable]
@@ -18,7 +18,7 @@ public class FireSettings {
 }
 
 
-public class playerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public Boundary boundary;
     public TiltLimits tiltLimits;
@@ -47,7 +47,7 @@ public class playerController : MonoBehaviour
         if(Input.GetButton("Fire1") && Time.time > this.nextFire)
         {
             this.nextFire = Time.time + fireSettings.fireRate;
-            Instantiate(this.shot, this.shotSpawn.position, this.shotSpawn.rotation);
+            Instantiate(this.shot, this.shotSpawn.position, this.shotSpawn.rotation );
             audioSource.Play();
         }
 
@@ -69,6 +69,6 @@ public class playerController : MonoBehaviour
                 Mathf.Clamp(rb.position.z, boundary.zMin, boundary.zMax)
             );
 
-        rb.rotation = Quaternion.Euler(rb.velocity.z * tiltLimits.tiltZ, 0.0f, rb.velocity.x * tiltLimits.tiltX);
+        rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * tiltLimits.tiltX);
     }
 }

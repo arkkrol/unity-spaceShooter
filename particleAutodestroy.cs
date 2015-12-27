@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 //using System.Collections;
 
-public class particleAutodestroy : MonoBehaviour {
+public class ParticleAutodestroy : MonoBehaviour {
     private ParticleSystem ps;
     void Start()
     {
